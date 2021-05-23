@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Cards - JS</title>
+    <link rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+        crossorigin="anonymous">
+    <style>
+        section{
+            display:flex;
+            flex-wrap: wrap;
+            /* justify-content: center; */
+        }
+        section figure{
+            /* flex:unset; */
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius:10px;
+            padding: 10px;
+            box-shadow: 6px 8px 8px -8px #000;
+            text-align: center;
+            
+        }
+        section figure img{
+            height: 215px;
+            width: 196px;
+            border-radius: 10px;
+        }
+        #studentName{ 
+            font-size: 24px;     
+            background: -webkit-linear-gradient(rgb(7, 11, 236), rgb(7, 197, 23));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+        #studentPlace{
+            color: blue;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <!-- https://pbs.twimg.com/media/Eo5OX9MXYAM-6bd?format=jpg&name=900x900
+    https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png -->
+<script>
+    var students = [
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        },
+        {
+            name : 'Virat Kohli',
+            photo : 'https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Virat-Kohli-PNG-Transparent-Image.png',
+            place : 'Bengaluru'
+        }
+    ];
+
+    var dynamicCards = '<section class="container">';
+    for(var i=0; i<students.length; i++){
+
+        dynamicCards += `
+        <figure>
+            <img src = "${students[i].photo}" alt = "${name}"/>
+            <figcaption id = "studentName"><b>${students[i].name}</b></figcaption>
+            <figcaption id = "studentPlace">${students[i].place}</figcaption>
+        </figure>
+        `
+
+    }
+    dynamicCards += '</section>';
+    document.write(dynamicCards);
+</script>
+<script 
+src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+crossorigin="anonymous">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" 
+integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" 
+crossorigin="anonymous">
+</script>
+</body>
+</html>
